@@ -90,7 +90,7 @@ Record the number of GHz in the value corresponding to `Model name`.
 **Memory Per Node**
 
 ```
-cat /proc/meminfo | grep "MemTotal"
+grep "MemTotal" /proc/meminfo 
 ```
 
 Record the value corresponding to `MemTotal`, rounded down to the closest well-known multiple of 2 (e.g. 214477800 KB becomes 192000000 KB = 192 GB).
