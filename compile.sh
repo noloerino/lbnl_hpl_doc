@@ -19,10 +19,6 @@ download() {
     tar -xvf "$VERSION.tar.gz"
 }
 
-#download
-
-cd $VERSION
-
 # helper function to replace a line in the makefile
 set_field() {
     sed -i "/^$1\\b=*/c\\$1 = $2" $3
@@ -42,6 +38,10 @@ compile() {
     make -j20 arch=intel64
 }
 
+if [ -d $VERSION ]; then
+    download
+fi
+cd $VERSION
 compile
 
 if [ -e "bin/intel64/HPL.dat" ] && [ -e "bin/intel64/xhpl" ]; then
