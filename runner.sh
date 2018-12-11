@@ -28,8 +28,8 @@ PARAMS_FILE="HPL.dat"
 ln -sf "$EXEC_DIR/HPL.dat" $PARAMS_FILE
 ln -sf "$EXEC_DIR/xhpl" xhpl
 
-P=$(grep Ps $PARAMS_FILE | awk '{ print $1 }')
-Q=$(grep Qs $PARAMS_FILE | awk '{ print $1 }')
+P=$(awk '/Ps/ { print $1 }' $PARAMS_FILE)
+Q=$(awk '/Qs/ { print $1 }' $PARAMS_FILE)
 PQ=$(($P * $Q))
 
 OUTPUT_DIR="$HOME/scratch/benchmarks"

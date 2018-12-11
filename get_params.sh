@@ -16,9 +16,10 @@ params = {
     # memory available for every cpu core, in GB
     'MEM_PER_NODE': $MEM_PER_NODE,
     # instructions per cycle for cpu
-    'INSTR_PER_CYCLE': 32 # most likely does not matter
+    'INSTR_PER_CYCLE': 32 # just a guess, but most likely does not matter
 }
 """
+Copy paste this object into the provided iPython notebook.
 Be careful with memory units. For reference, the full value in /proc/meminfo was
 $(awk '/MemTotal/ { print $2 " " $3 }' /proc/meminfo)
 """
