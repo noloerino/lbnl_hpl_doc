@@ -2,7 +2,7 @@
 # instructions courtesy of Matthew Li
 # https://github.com/matthew-li/lbnl_hpl_doc
 #
-# runs LINPAC test on this node
+# runs LINPACK test on this node
 #
 # this can be submitted as a SLURM job once HPL.dat is configured,
 # although since this is usually used on nodes not yet in the SLURM rotation, this
@@ -34,6 +34,12 @@ PQ=$(($P * $Q))
 
 OUTPUT_DIR="$HOME/scratch/benchmarks"
 mkdir -p $OUTPUT_DIR
+
+if [[ $(hostname) = ln* ]]; then
+    echo "Cannot run benchmark on login node."
+    echo "Exiting."
+    exit 1
+fi
 
 STARTTIME=$(date '+%s')
 if [ $# -eq 1 ]; then
